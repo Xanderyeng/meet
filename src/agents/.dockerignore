@@ -34,5 +34,5 @@ db.sqlite3
 **/.mypy_cache
 **/.ruff_cache
 
-# Frontend
-**/node_modules
+# Env
+.env

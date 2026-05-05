@@ -12,6 +12,10 @@ and this project adheres to
 
 - 🔒️(backend) add validation of Room.configuration
 
+### Changed
+
+- 🧑‍💻(agents) use `uv` for package management
+
 ### Fixed
 
 - ♻(frontend) standardize role terminology across localizations
