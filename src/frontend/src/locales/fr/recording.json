@@ -1,4 +1,16 @@
 {
+  "list": {
+    "title": "Mes enregistrements",
+    "empty": "Vous n'avez pas encore d'enregistrements. Ils apparaîtront ici après vos réunions.",
+    "viewButton": "Voir",
+    "showingCount": "Affichage de {{shown}} sur {{total}} enregistrements",
+    "status": {
+      "ready": "Prêt",
+      "recording": "En cours",
+      "processing": "Traitement",
+      "failed": "Échec"
+    }
+  },
   "error": {
     "title": "Enregistrement indisponible",
     "body": "L’enregistrement est introuvable. Seul l’organisateur de la réunion peut y accéder. N’hésitez pas à le contacter si besoin."

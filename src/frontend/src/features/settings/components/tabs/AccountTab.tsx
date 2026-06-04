@@ -1,4 +1,4 @@
-import { A, Badge, Button, DialogProps, Field, H, P } from '@/primitives'
+import { A, Badge, Button, DialogProps, Field, H, Link, P } from '@/primitives'
 import { Trans, useTranslation } from 'react-i18next'
 import { useRoomContext } from '@livekit/components-react'
 import { useUser } from '@/features/auth'
@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { LoginButton } from '@/components/LoginButton'
 import { usePersistentUserChoices } from '@/features/rooms/livekit/hooks/usePersistentUserChoices'
 import { useRenameParticipant } from '@/features/rooms/api/renameParticipant'
+import { routes } from '@/routes'
 
 export type AccountTabProps = Pick<DialogProps, 'onOpenChange'> &
   Pick<TabPanelProps, 'id'>
@@ -63,6 +64,11 @@ export const AccountTab = ({ id, onOpenChange }: AccountTabProps) => {
               values={{ user: userDisplay }}
               components={[<Badge />]}
             />
+          </P>
+          <P>
+            <Link to={routes.recordingsList.to!()}>
+              {t('account.myRecordings', { ns: 'settings' })}
+            </Link>
           </P>
           <P>
             <A onPress={logout}>{t('logout', { ns: 'global' })}</A>

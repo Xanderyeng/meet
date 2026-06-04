@@ -1,4 +1,16 @@
 {
+  "list": {
+    "title": "My Recordings",
+    "empty": "You have no recordings yet. Recordings will appear here after your meetings.",
+    "viewButton": "View",
+    "showingCount": "Showing {{shown}} of {{total}} recordings",
+    "status": {
+      "ready": "Ready",
+      "recording": "Recording",
+      "processing": "Processing",
+      "failed": "Failed"
+    }
+  },
   "error": {
     "title": "Recording unavailable",
     "body": "The recording is unavailable or may have been deleted. Only the meeting host can access it. Feel free to contact them if needed."

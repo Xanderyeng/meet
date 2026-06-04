@@ -5,7 +5,8 @@
     "youAreNotLoggedIn": "Vous n'êtes pas connecté.",
     "nameLabel": "Votre Nom",
     "authentication": "Authentification",
-    "nameError": "Votre Nom ne peut pas être vide"
+    "nameError": "Votre Nom ne peut pas être vide",
+    "myRecordings": "Mes enregistrements"
   },
   "preferences": {
     "title": "Préférences",
