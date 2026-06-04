@@ -1,0 +1,9 @@
+port: 7880
+redis:
+  address: redis:6379
+keys:
+  meet: SVNq2L0Yb7Jq5nHKoL6U2QGQhniX7_7dgWy5mE7ZlQc
+rtc:
+  udp_port: 7882
+  tcp_port: 7881
+  use_external_ip: true

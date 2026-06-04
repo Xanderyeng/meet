@@ -1,0 +1,28 @@
+  egress:
+    image: livekit/egress:latest
+
+    environment:
+      EGRESS_CONFIG_FILE: /config.yaml
+
+    volumes:
+      - /opt/meet/egress.yaml:/config.yaml
+
+    depends_on:
+      - livekit
+      - redis
+
+    shm_size: "2gb"
+
+    cap_add:
+      - SYS_ADMIN
+
+    security_opt:
+      - seccomp:unconfined
+
+    tmpfs:
+      - /tmp
+      - /run
+
+    init: true
+
+    restart: unless-stopped

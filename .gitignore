@@ -34,7 +34,8 @@ MANIFEST
 *.mo
 
 # Environments
-.env
+.env.*
+.env.local
 .venv
 env/
 venv/
