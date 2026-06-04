@@ -231,6 +231,16 @@
       }
     }
   },
+  "pictureInPicture": {
+    "placeholder": {
+      "title": "Uw videogesprek bevindt zich in een ander venster.",
+      "description": "Met de beeld-in-beeld-modus kunt u verbonden blijven met het gesprek terwijl u andere taken uitvoert.",
+      "bringBack": "Gesprek hier terughalen"
+    },
+    "stage": "Deelnemers",
+    "controlBar": "Vergaderbesturing",
+    "title": "Beeld-in-beeld vergadering"
+  },
   "options": {
     "buttonLabel": "Meer opties",
     "items": {
@@ -241,6 +251,10 @@
       "username": "Verander uw naam",
       "effects": "Pas effecten toe",
       "switchCamera": "Selecteer camera",
+      "pictureInPicture": {
+        "enter": "Beeld-in-beeld",
+        "exit": "Beeld-in-beeld sluiten"
+      },
       "fullscreen": {
         "enter": "Volledig scherm",
         "exit": "Stop volledig scherm stand"
@@ -527,6 +541,10 @@
       "screenshare": {
         "label": "Hun scherm delen",
         "description": "Als u deze optie uitschakelt, kunnen deelnemers hun scherm niet meer delen en wordt elke lopende schermdeling onmiddellijk gestopt."
+      },
+      "mute": {
+        "label": "Anderen dempen",
+        "description": "Wanneer uitgeschakeld, kunnen deelnemers andere deelnemers niet meer dempen."
       }
     }
   },

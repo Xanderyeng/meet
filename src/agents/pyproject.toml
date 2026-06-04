@@ -1,29 +1,25 @@
 
 [project]
 name = "agents"
-version = "1.15.0"
+version = "1.18.0"
 requires-python = ">=3.12"
 dependencies = [
-    "livekit-agents==1.4.5",
-    "livekit-plugins-deepgram==1.4.5",
-    "livekit-plugins-silero==1.4.5",
+    "livekit-agents==1.5.13",
+    "livekit-plugins-deepgram==1.5.13",
+    "livekit-plugins-silero==1.5.13",
     "livekit-plugins-kyutai-lasuite==0.0.6",
     "python-dotenv==1.2.2",
-    "protobuf==6.33.5",
-    "minio==7.2.15"
+    "protobuf==6.33.6",
+    "minio==7.2.20"
 ]
 
 [project.optional-dependencies]
 dev = [
-    "ruff==0.15.6",
+    "ruff==0.15.14",
 ]
 
-[tool.setuptools]
-py-modules = ["multi_user_transcriber", "metadata_collector", "exceptions"]
-
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+[tool.uv]
+package = false
 
 [tool.ruff]
 target-version = "py313"

@@ -10,6 +10,61 @@ and this project adheres to
 
 ### Added
 
+- ✨(backend) add file specific admin #1387
+
+### Changed
+
+- 🐛(agents) fix bug when closing metadata-collector
+- ⬆️(dependencies) update python dependencies
+- ⬆️(frontend) update js dependencies
+
+### Fixed
+
+- 🔇(summary) make ffmpeg quiet #1404
+- 🔒️(backend) prevent accessing files if they are not ready #1395
+
+## [1.18.0] - 2026-06-03
+
+### Added
+
+- 🔧(backend) backport logging configuration from docs
+- 🧑‍💻(backend) add management command to merge duplicate users
+- 👷(helm) add Kubernetes job for duplicate user merge command
+
+### Fixed
+
+- 🐛(backend) prevent duplicate pending users on concurrent requests
+- 🔒️(backend) prevent file change post checks #1377
+
+## [1.17.0] - 2026-05-31
+
+### Added
+
+- ✨(fullstack) allow participants to mute others based on room configuration
+- ✨(frontend) add synchronizer for room metadata updates
+- ✨(frontend) make reaction toolbar responsive on small viewports
+- ✨(frontend) enable reactions on mobile devices
+- ✨(frontend) introduce picture-in-picture meeting
+- ✨(backend) add core.recording.event.parsers.S3Parser
+- ✨(summary) extended support for all video / audio files #1358
+
+### Changed
+
+- ♻️(fullstack) simplify source serialization
+- ✨(backend) expose room configuration to all API consumers
+- 🩹(frontend) improve reaction toolbar centering with dynamic positioning
+- 🚀 (paas) remove buildpack requirements.txt to use the new uv.lock #1349
+- ✨(backend) allow room configuration and access level via external api #1260
+- ♻️(backend) prefix Swagger routes with /api
+
+### Fixed
+
+- 🩹(backend) fix swagger and redoc documentation URLs
+
+## [1.16.0] - 2026-05-13
+
+### Added
+
 - 🔒️(backend) add validation of Room.configuration
 - ✨(helm) add support multiple transcribe worker / endpoint #1247
 - ✨(backend) make LiveKit Egress recording encoding configurable #1288
@@ -18,12 +73,19 @@ and this project adheres to
 ### Changed
 
 - ♻️(summary) change tasks endpoint signature
+- ⬆️(dependencies) update urllib3 to v2.7.0 [SECURITY]
+- 🧑‍💻(agents) use `uv` for package management
+- ✨(summary) improve speaker-to-participant assignment
 
 ### Fixed
 
 - ♻(frontend) standardize role terminology across localizations
 - 🐛(backend) make start-recording atomic and fault-tolerant
 - 🔒️(frontend) room ids are generated with non-cryptographic rand
+- ⬆️(mail) fix dependencies not having resolved or integrity field #1321
+- 🐛(summary) complete webm support #1328
+- 🐛(backend) add link to "Open" text in recording email
+- 🩹(frontend) fix spacing regression in mobile control bar
 
 ## [1.15.0] - 2026-04-30
 

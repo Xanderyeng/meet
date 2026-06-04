@@ -249,6 +249,7 @@ services:
   metadata-collector-dev:
     build:
       context: ./src/agents
+      target: development
     command: ["python", "metadata_collector.py", "dev"]
     environment:
       - LIVEKIT_URL=ws://livekit:7880
@@ -261,6 +262,7 @@ services:
       - AWS_S3_SECURE_ACCESS=False
     volumes:
       - ./src/agents:/app
+      - /app/.venv
     depends_on:
       - livekit
       - minio
@@ -268,6 +270,16 @@ services:
       watch:
         - action: rebuild
           path: ./src/agents
+
+  multi-user-transcriber-dev:
+    build:
+      context: ./src/agents
+      target: development
+    env_file:
+      - env.d/development/multi_user_transcriber
+    volumes:
+      - ./src/agents:/app
+      - /app/.venv
 
   redis-summary:
     image: redis
@@ -329,14 +341,6 @@ services:
       watch:
         - action: rebuild
           path: ./src/summary
-
-  multi-user-transcriber:
-    build:
-      context: ./src/agents
-    env_file:
-      - env.d/development/multi_user_transcriber
-    volumes:
-      - ./src/agents:/app
 
 networks:
   default:

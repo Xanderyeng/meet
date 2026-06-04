@@ -5,7 +5,7 @@ import {
   isWeb,
   log,
 } from '@livekit/components-core'
-import { Participant, RoomEvent, Track } from 'livekit-client'
+import { type Participant, RoomEvent, Track } from 'livekit-client'
 import React, { useCallback, useRef, useState, useEffect } from 'react'
 import {
   ConnectionStateToast,
@@ -32,6 +32,7 @@ import { useRegisterKeyboardShortcut } from '@/features/shortcuts/useRegisterKey
 import { useSettingsDialog } from '@/features/settings'
 import { SettingsDialogExtendedKey } from '@/features/settings/type'
 import { useVideoResolutionSubscription } from '../hooks/useVideoResolutionSubscription'
+import { useSyncLiveKitMetadata } from '../hooks/useSyncLiveKitMetadata'
 import { SettingsDialogProvider } from '@/features/settings/components/SettingsDialogProvider'
 import { IsIdleDisconnectModal } from '../components/IsIdleDisconnectModal'
 import { getParticipantName } from '@/features/rooms/utils/getParticipantName'
@@ -40,6 +41,8 @@ import { ReactionPortals } from '@/features/reactions/components/ReactionPortals
 import { CarouselLayout } from '@/features/layout/components/CarouselLayout'
 import { GridLayout } from '@/features/layout/components/GridLayout'
 import { RoomContentArea } from '@/features/layout/components/RoomContentArea'
+import { usePictureInPicture } from '@/features/pip/hooks/usePictureInPicture'
+import { PipRoomPlaceholder } from '@/features/pip/components/PipRoomPlaceholder'
 
 /**
  * @public
@@ -90,6 +93,7 @@ export function VideoConference({ ...props }: VideoConferenceProps) {
   useConnectionObserver()
   useRoomPageTitle()
   useVideoResolutionSubscription()
+  useSyncLiveKitMetadata()
 
   useRegisterKeyboardShortcut({
     id: 'open-shortcuts',
@@ -118,6 +122,8 @@ export function VideoConference({ ...props }: VideoConferenceProps) {
   const carouselTracks = tracks.filter(
     (track) => !isEqualTrackRef(track, focusTrack)
   )
+
+  const { isOpen: isPictureInPictureOpen } = usePictureInPicture()
 
   // handle pin announcements
 
@@ -248,32 +254,38 @@ export function VideoConference({ ...props }: VideoConferenceProps) {
           />
           <IsIdleDisconnectModal />
           <RoomContentArea>
-            {!focusTrack ? (
-              <div
-                className="lk-grid-layout-wrapper"
-                style={{ height: 'auto' }}
-              >
-                <GridLayout tracks={tracks} style={{ padding: 0 }}>
-                  <ParticipantTile />
-                </GridLayout>
-              </div>
+            {isPictureInPictureOpen ? (
+              <PipRoomPlaceholder />
             ) : (
-              <div
-                className="lk-focus-layout-wrapper"
-                style={{ height: 'auto' }}
-              >
-                <FocusLayoutContainer style={{ padding: 0 }}>
-                  <CarouselLayout
-                    tracks={carouselTracks}
-                    style={{
-                      minWidth: '200px',
-                    }}
+              <>
+                {!focusTrack ? (
+                  <div
+                    className="lk-grid-layout-wrapper"
+                    style={{ height: 'auto' }}
                   >
-                    <ParticipantTile />
-                  </CarouselLayout>
-                  {focusTrack && <FocusLayout trackRef={focusTrack} />}
-                </FocusLayoutContainer>
-              </div>
+                    <GridLayout tracks={tracks} style={{ padding: 0 }}>
+                      <ParticipantTile />
+                    </GridLayout>
+                  </div>
+                ) : (
+                  <div
+                    className="lk-focus-layout-wrapper"
+                    style={{ height: 'auto' }}
+                  >
+                    <FocusLayoutContainer style={{ padding: 0 }}>
+                      <CarouselLayout
+                        tracks={carouselTracks}
+                        style={{
+                          minWidth: '200px',
+                        }}
+                      >
+                        <ParticipantTile />
+                      </CarouselLayout>
+                      {focusTrack && <FocusLayout trackRef={focusTrack} />}
+                    </FocusLayoutContainer>
+                  </div>
+                )}
+              </>
             )}
           </RoomContentArea>
           <ControlBar

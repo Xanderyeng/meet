@@ -56,16 +56,16 @@ class Settings(BaseSettings):
 
     # Audio recordings
     recording_max_duration: Optional[int] = None
-    recording_allowed_extensions: Set[str] = {
-        ".ogg",
-        ".mp4",
-        ".m4a",
-        ".webm",
-        ".ogv",
-        ".opus",
-        ".wav",
-    }
-    recording_video_extensions: Set[str] = {".mp4"}
+    codec_to_extension: dict[str, str] = Field(
+        default_factory=lambda: {
+            "aac": ".m4a",
+            "alac": ".m4a",
+            "mp3": ".mp3",
+            "opus": ".opus",
+            "vorbis": ".ogg",
+            "flac": ".flac",
+        }
+    )
 
     # Celery settings
     celery_broker_url: str = "redis://redis/0"
@@ -105,6 +105,9 @@ class Settings(BaseSettings):
 
     # Speaker to user assignment
     is_resolve_speaker_identities_enabled: bool = True
+    resolve_speaker_identities_default_overlap_threshold: float = 0.5
+    resolve_speaker_identities_enable_split_on_words: bool = True
+    resolve_speaker_identities_max_word_duration: float = 1  # seconds
 
     # Webhook-related settings
     webhook_max_retries: int = 2

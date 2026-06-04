@@ -1,6 +1,6 @@
 import { supportsScreenSharing } from '@livekit/components-core'
 import { useTranslation } from 'react-i18next'
-import { ControlBarAuxProps } from './ControlBar'
+import type { ControlBarAuxProps } from './ControlBar'
 import React from 'react'
 import { css } from '@/styled-system/css'
 import { LeaveButton } from '../../components/controls/LeaveButton'
@@ -26,6 +26,7 @@ import { AudioDevicesControl } from '../../components/controls/Device/AudioDevic
 import { VideoDeviceControl } from '../../components/controls/Device/VideoDeviceControl'
 import { useSettingsDialog } from '@/features/settings/hook/useSettingsDialog'
 import { ControlBarRegion } from '@/features/layout/components/ControlBarRegion'
+import { ReactionsToggle } from '@/features/reactions/components/ReactionsToggle'
 
 export function MobileControlBar({
   onDeviceError,
@@ -62,6 +63,7 @@ export function MobileControlBar({
             }
             hideMenu={true}
           />
+          <ReactionsToggle />
           <HandToggle />
           <Button
             id="room-options-trigger"
