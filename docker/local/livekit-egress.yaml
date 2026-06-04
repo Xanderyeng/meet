@@ -1,0 +1,12 @@
+log_level: debug
+
+# Must match keys in livekit-server.yaml / .env.local
+api_key: localkey
+api_secret: localsecret
+
+# Use the container service name and WebSocket (no TLS locally)
+ws_url: "ws://livekit:7880"
+insecure: true
+
+redis:
+  address: redis:6379

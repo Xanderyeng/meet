@@ -1,0 +1,13 @@
+log_level: debug
+
+# Keys must match LIVEKIT_API_KEY / LIVEKIT_API_SECRET in .env.local
+keys:
+  localkey: localsecret
+
+redis:
+  address: redis:6379
+
+webhook:
+  api_key: localkey
+  urls:
+    - http://backend:8000/api/v1.0/rooms/webhooks-livekit/
