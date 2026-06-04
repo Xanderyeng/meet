@@ -1,4 +1,4 @@
-import { A, Badge, Button, DialogProps, Field, H, P } from '@/primitives'
+import { A, Badge, Button, DialogProps, Field, H, Link, P } from '@/primitives'
 import { Trans, useTranslation } from 'react-i18next'
 import { useRoomContext } from '@livekit/components-react'
 import { useUser } from '@/features/auth/api/useUser'
@@ -8,6 +8,7 @@ import { HStack } from '@/styled-system/jsx'
 import { useState } from 'react'
 import { LoginButton } from '@/components/LoginButton'
 import { useRenameParticipant } from '@/features/rooms/api/renameParticipant'
+import { routes } from '@/routes'
 import { saveUsername } from '@/stores/userChoices'
 import { logout } from '@/features/auth/utils/logout'
 
@@ -63,6 +64,11 @@ export const AccountTab = ({ id, onOpenChange }: AccountTabProps) => {
               values={{ user: userDisplay }}
               components={[<Badge key="user-badge" />]}
             />
+          </P>
+          <P>
+            <Link to={routes.recordingsList.to!()}>
+              {t('account.myRecordings', { ns: 'settings' })}
+            </Link>
           </P>
           <P>
             <A onPress={logout}>{t('logout', { ns: 'global' })}</A>
